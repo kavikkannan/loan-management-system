@@ -18,7 +18,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
+    const token = jwt.sign({ userId: user._id }, "mongodb+srv://kavikkannank:UkC3R51Gzkld6n2w@kavikkannan.w4uqvp5.mongodb.net/?retryWrites=true&w=majority&appName=kavikkannan", {
       expiresIn: "30d",
     });
 

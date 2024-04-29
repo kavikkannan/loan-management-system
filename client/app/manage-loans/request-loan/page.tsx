@@ -36,10 +36,11 @@ const RequestLoan = () => {
 
     // Create a request body object
     const requestBody = {
-      loanAmount: Number(loanAmount), // Convert to a number
-      term: Number(term), // Convert to a number
+      loanAmount: Number(50000), // Convert to a number
+      term: Number(3), // Convert to a number
     };
     try {
+      console.log(Cookies.get("userId"));
       // Send the request to the server (e.g., via an API call)
       const response = await fetch(
         "/api/loans/createLoan/" + Cookies.get("userId"),
@@ -55,9 +56,7 @@ const RequestLoan = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // Handle successful response (e.g., show a success message)
         alert(`Loan application successful.`);
-        // Reset form fields after submission
         router.push("/manage-loans/my-loans");
         setLoanAmount("");
         setTerm("");
@@ -68,10 +67,8 @@ const RequestLoan = () => {
     } catch (error) {
       console.error("Loan application error:", error);
       setErr("Loan Application Failed! Please try again later");
-      // Handle error (e.g., display an error message)
       alert("Loan application failed. Please try again later.");
     }
-    // Reset form fields after submission
     setLoanAmount("");
     setTerm("");
   };

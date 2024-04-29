@@ -90,7 +90,7 @@ exports.createLoan = async (req, res) => {
 exports.getUserLoans = async (req, res) => {
   try {
     const userId = req.params.userId;
-
+    console.log(userId);
     const loans = await Loan.find({ user: userId });
 
     const userLoans = loans.map((loan) => {
